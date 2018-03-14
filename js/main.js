@@ -4,23 +4,16 @@ $(document).ready(function(){
   const canvas = $("#chill-wave")[0];
   const context = canvas.getContext('2d');
   const lines = [];
-
-  const colors = [
-    [ '#001842', '#00B3DA' ]
-  ];
-
-  var colorIndex = -1;
+  const fps = 15;
 
   var step = 0,
       width = 0,
       height = 0;
 
-  document.ontouchstart = color;
-  document.onmousedown = color;
   window.onresize = setup;
 
   setup();
-  color();
+  canvas.style.backgroundColor = '#001842';
   update();
 
   function setup() {
@@ -30,8 +23,8 @@ $(document).ready(function(){
 
     lines.length = 0;
 
-    let lineCount = height / 36;
-    let pointCount = 24;
+    let lineCount = height / 56;
+    let pointCount = 56;
     let spacingH = width / pointCount;
     let spacingV = height / lineCount;
 
@@ -57,14 +50,8 @@ $(document).ready(function(){
 
   }
 
-  function color() {
-    colorIndex = ( ++colorIndex ) % colors.length;
-    canvas.style.backgroundColor = colors[colorIndex][0];
-  }
-
   function update() {
-
-    step += 0.1;
+    step += 0.5;
 
     canvas.width = width;
     canvas.height = height;
@@ -72,8 +59,8 @@ $(document).ready(function(){
     context.clearRect( 4, 0, width, height );
 
     context.lineWidth = 2;
-    context.strokeStyle = colors[colorIndex][1];
-    context.fillStyle = colors[colorIndex][0];
+    context.strokeStyle = '#00B3DA';
+    context.fillStyle = '#001842';
 
     lines.forEach( ( line, v ) => {
 
@@ -109,8 +96,9 @@ $(document).ready(function(){
       context.fill();
 
     } );
-
-    requestAnimationFrame( update );
+    setTimeout(function() {
+      requestAnimationFrame( update );
+    }, 1000 / fps);
   }
 
   // portfolio placeholder

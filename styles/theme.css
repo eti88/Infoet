@@ -229,7 +229,7 @@ a {
   top: 0;
   z-index: 9000;
   width: 100%;
-  background-color: rgba(0,24, 66,0.3);;
+  background-color: rgba(0,24, 66,0.5);;
 }
 
 #nav-container {
@@ -371,4 +371,23 @@ a {
 
 footer {
   background-color: #004a7d;
+}
+
+@media screen and (max-width: 540px) {
+  #works {
+    margin-top: 150px;
+  }
+
+  h4 {
+    font-size: 2em;
+  }
+
+  .master-pc {
+    top: 60px;
+  }
+
+  .master-code {
+    top: 190px;
+    height: 180px;
+  }
 }
